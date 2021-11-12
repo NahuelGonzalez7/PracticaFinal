@@ -13,7 +13,7 @@
 
 @using (Html.BeginForm("GetActualDay", "Turno", FormMethod.Get))
 {
-    <label> Search actual day turns </label>
+    <label> Search actual day turns (Month,Day,Year)</label>
     @Html.TextBox("day", null)
     <input type="submit" value="get" />
 }
