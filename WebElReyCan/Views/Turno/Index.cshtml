@@ -1,0 +1,93 @@
+﻿@model IEnumerable<WebElReyCan.Models.Turno>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+
+
+<p>
+    @Html.ActionLink("Create New Turn", "Create", "Turno")
+</p>
+
+
+@using (Html.BeginForm("GetActualDay", "Turno", FormMethod.Get))
+{
+    <label> Search actual day turns </label>
+    @Html.TextBox("day", null)
+    <input type="submit" value="get" />
+}
+
+@using (Html.BeginForm("GetByName", "Turno", FormMethod.Get))
+{
+    <label> Show turns by name </label>
+    @Html.TextBox("name", null)
+    <input type="submit" value="get" />
+}
+
+@using (Html.BeginForm("GetByCell", "Turno", FormMethod.Get))
+{
+    <label> Search owner by cell number </label>
+    @Html.TextBox("cell", null)
+    <input type="submit" value="get" />
+}
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Date)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Hour)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PetName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Breed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Age)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OwnerName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CellNumber)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Date)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Hour)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.PetName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Breed)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Age)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.OwnerName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CellNumber)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID })
+                @Html.ActionLink("Details", "Detail", new { id = item.ID })
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
+
+</table>
